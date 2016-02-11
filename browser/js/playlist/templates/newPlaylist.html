@@ -1,0 +1,7 @@
+<div>
+	<form name="NewPlaylist">
+		<input type="text" ng-required="true" ng-maxlength="16" name="PlaylistTitle" ng-model="playlist.name"/>
+		<input type="submit" ng-disabled="NewPlaylist.$invalid" value="Create New Playlist" ng-click="createPlaylist()"/>
+		<div class="alert alert-warning" ng-show="NewPlaylist.$dirty && NewPlaylist.$invalid">Please name playlist</div>
+	</form>
+</div>
