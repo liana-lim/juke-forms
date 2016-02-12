@@ -52,5 +52,17 @@ juke.controller('showPlaylistCtrl', function ($scope, $stateParams, PlaylistFact
     return PlayerFactory.isPlaying() && PlayerFactory.getCurrentSong() === song;
   };
 
+  $scope.deleteSong = function(playlistId, song){
+  	console.log("deleting song")
+  	PlaylistFactory.deleteSong(playlistId, song._id)
+  	.then(function () {
+  		var i = $scope.playlist.songs.indexOf(song);
+  		console.log("the index:",i);
+  		$scope.playlist.songs.splice(i,1);
+  	})
+  	.catch(console.error.bind(console));
+  }
+
+
 
 });

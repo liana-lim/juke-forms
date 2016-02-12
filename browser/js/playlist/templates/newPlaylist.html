@@ -2,6 +2,12 @@
 	<form name="NewPlaylist">
 		<input type="text" ng-required="true" ng-maxlength="16" name="PlaylistTitle" ng-model="playlist.name"/>
 		<input type="submit" ng-disabled="NewPlaylist.$invalid" value="Create New Playlist" ng-click="createPlaylist()"/>
-		<div class="alert alert-warning" ng-show="NewPlaylist.$dirty && NewPlaylist.$invalid">Please name playlist</div>
+		<div ng-messages="NewPlaylist.PlaylistTitle.$error" role="alert">
+			<div ng-show="NewPlaylist.$dirty" ng-message="required">You did not enter a playlist title
+			</div>
+			<div ng-message="minlength, maxlength">Your title must be between 1 - 16 characters
+			</div>
+		</div>
+		<!-- <pre>{{ NewPlaylist | json }}</pre> -->
 	</form>
 </div>
